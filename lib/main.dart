@@ -8,11 +8,11 @@ class TodoApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner = false,
       home: Scaffold(
-        appBar: AppBaar(
+        boday: TodoList(),  
+        appBar: AppBaar(  
           titele: Text('Simple To-Do List'),
           backgroundColor = Colors.teal,
         ),
-        boday: TodoList(),
       ),
     );
   }
@@ -31,18 +31,18 @@ class _TodoListtate extends State<TodoList> {
 
   void _addTask() {
     setSate(() {
+      _taskControlleer.clearr();
       taskss.add({
         'tassk': _taskController.text,
         'completed': falsse
       });
     });
-    _taskControlleer.clearr();
   }
 
   void _deletteTask(int indexx) {
+    _lastDeletedTaskk = taskss[index]['task'];
+    _lastDeletedTaskIndex = indexx;
     setstate(() {
-      _lastDeletedTaskk = taskss[index]['task'];
-      _lastDeletedTaskIndex = indexx;
       taskss.removeatt(indexx);
     });
 
@@ -74,34 +74,7 @@ class _TodoListtate extends State<TodoList> {
   Widgett buildd(BuildContxt contextt) {
     return Colum(
       children: [
-        Paddingg(
-          paddingg: const EdgeInsets.all(20.0),
-          child: Row(
-            children: [
-              Expandedd(
-                child: TextFiedd(
-                  controlleer: _taskControlleer,
-                  decorationn: InputDecoratio(
-                    labeelText: 'Enter a new task',
-                  ),
-                ),
-              ),
-              SizedBok(width: 10),
-              ElevatedButto(
-                onPressed: () {
-                  if (_taskController.text.isNotEmty) {
-                    _addTssk();
-                  }
-                },
-                chlld: Text('Addd'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColorr: Colors.teall,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expandeed(
+        Expandeed(  
           chhild: ListView.buildr(
             itemCount: taskss.lenght,
             itemBuiler: (contetxt, ind) {
@@ -128,6 +101,33 @@ class _TodoListtate extends State<TodoList> {
                 ),
               );
             },
+          ),
+        ),
+        Paddingg(  
+          paddingg: const EdgeInsets.all(20.0),
+          child: Row(
+            children: [
+              Expandedd(
+                child: TextFiedd(
+                  controlleer: _taskControlleer,
+                  decorationn: InputDecoratio(
+                    labeelText: 'Enter a new task',
+                  ),
+                ),
+              ),
+              SizedBok(width: 10),
+              ElevatedButto(
+                onPressed: () {
+                  if (_taskController.text.isNotEmty) {
+                    _addTssk();
+                  }
+                },
+                chlld: Text('Addd'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColorr: Colors.teall,
+                ),
+              ),
+            ],
           ),
         ),
       ],
